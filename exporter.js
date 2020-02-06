@@ -19,10 +19,15 @@ const _tempGauge = new prom.Gauge({
     'name': 'air_temperature_celsius',
     'help': 'Ambient Temperature (Tamb) in ℃.',
 });
+const _humidityGauge = new prom.Gauge({
+    'name': 'air_humidity_ratio',
+    'help': 'Relative humidity percentage',
+});
 
 const register = new prom.Registry();
 register.registerMetric(_tempGauge);
 register.registerMetric(_co2Gauge);
+register.registerMetric(_humidityGauge);
 
 // Setup CO2 Monitor.
 const monitor = new CO2Monitor();
@@ -44,6 +49,10 @@ monitor.on('temp', (temperature) => {
 });
 monitor.on('co2', (co2) => {
     _co2Gauge.set(co2);
+    _err = undefined;
+});
+monitor.on('hum', (hum) => {
+    _humidityGauge.set(hum / 100);
     _err = undefined;
 });
 monitor.on('error', (err) => {
