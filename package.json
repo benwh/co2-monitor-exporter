@@ -16,7 +16,7 @@
     "co2-exporter": "./exporter.js"
   },
   "dependencies": {
-    "node-co2-monitor": "^0.2.1",
+    "node-co2-monitor": "git+https://gitlab.com/jaller94/node-co2-monitor.git#63911b62f831848ce7be0e2d0f80ea322c693080",
     "prom-client": "^10.2.2",
     "yargs": "^11.0.0"
   },
