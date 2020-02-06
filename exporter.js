@@ -12,14 +12,12 @@ const settings = {
 
 // Initialize prometheus metrics.
 const _co2Gauge = new prom.Gauge({
-    'name': 'air_co2',
+    'name': 'air_co2_ppm',
     'help': 'Relative Concentration of CO2 (CntR) in ppm.',
-    'labels': ['tag']
 });
 const _tempGauge = new prom.Gauge({
-    'name': 'air_temp',
+    'name': 'air_temperature_celsius',
     'help': 'Ambient Temperature (Tamb) in ℃.',
-    'labels': ['tag']
 });
 
 const register = new prom.Registry();
